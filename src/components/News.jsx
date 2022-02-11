@@ -3,7 +3,8 @@ import { Select, Typography, Row, Col, Avatar, Card } from "antd";
 import moment from "moment";
 
 import { useGetCryptoNewsQuery } from "../services/cryptoNewsApi";
-import { useGetCryptosQuery } from "../services/cryptoApi"; 
+import { useGetCryptosQuery } from "../services/cryptoApi";
+import Loader from "./Loader";
 
 const { Text, Title } = Typography;
 const { Option } = Select;
@@ -12,7 +13,7 @@ const demoImage =
   "https://www.bing.com/th?id=OVFT.mpzuVZnv8dwIMRfQGPbOPC&pid=News";
 
 const News = ({ simplified }) => {
-  const [newsCategory, setNewsCategory] = useState('Crytocurrency');
+  const [newsCategory, setNewsCategory] = useState("Crytocurrency");
   // Rename data to crypto news
   const { data: cryptoNews } = useGetCryptoNewsQuery({
     newsCategory,
@@ -21,9 +22,7 @@ const News = ({ simplified }) => {
 
   const { data } = useGetCryptosQuery(100);
 
-  if (!cryptoNews?.value) return "Loading...";
-
-  console.log(cryptoNews);
+  if (!cryptoNews?.value) return <Loader />;
 
   return (
     <Row gutter={[24, 24]}>
@@ -41,12 +40,14 @@ const News = ({ simplified }) => {
             ]}
           >
             <option value="Cryptocurrency">All Cryptocurrencies</option>
-            {data?.data?.coins?.map((currency) => <Option value={currency.name}>{currency.name}</Option>)}
+            {data?.data?.coins?.map((currency) => (
+              <Option value={currency.name}>{currency.name}</Option>
+            ))}
           </Select>
         </Col>
       )}
       {cryptoNews.value.map((news, i) => (
-        <Col xs={24} sm={12} lg={8} key={1}>
+        <Col xs={24} sm={12} lg={8} key={i}>
           <Card hoverable className="news-card">
             <a href={news.url} target="_blank" rel="noreferrer">
               <div className="news-image-container">
