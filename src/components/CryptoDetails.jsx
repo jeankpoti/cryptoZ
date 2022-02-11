@@ -39,6 +39,8 @@ const CryptoDetails = () => {
 
   const cryptoDetails = data?.data?.coin;
 
+  // cryptoDetails['24hVolume']
+
   if (isFetching) return "Loading...";
 
   console.log("Deatils:", cryptoDetails);
@@ -54,7 +56,7 @@ const CryptoDetails = () => {
     { title: "Rank", value: cryptoDetails?.rank, icon: <NumberOutlined /> },
     {
       title: "24h Volume",
-      value: `$ ${cryptoDetails?.volume && millify(cryptoDetails?.volume)}`,
+      value: `$ ${cryptoDetails?.['24hVolume'] && millify(cryptoDetails?.['24hVolume'])}`,
       icon: <ThunderboltOutlined />,
     },
     {
@@ -122,7 +124,7 @@ const CryptoDetails = () => {
           market cap and supply.
         </p>
       </Col>
-      <Select
+      {/* <Select
         defaultValue="7d"
         className="select-timeperiod"
         placeholder="Select Time Period"
@@ -131,7 +133,7 @@ const CryptoDetails = () => {
         {time.map((date, i) => (
           <Option key={i}>{date}</Option>
         ))}
-      </Select>
+      </Select> */}
       {/* <LineChart
         coinHistory={coinHistory}
         currentPrice={cryptoDetails?.price}
