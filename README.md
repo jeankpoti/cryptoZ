@@ -1,4 +1,14 @@
 <<<<<<< HEAD
+
+# Home page
+![All page](assets/CryptoZ.png)
+# Crypto page
+![All page](assets/CryptoZ-crypto.png)
+# Crypto details page
+![All page](assets/CryptoZ-details.png)
+# Crypto news page
+![All page](assets/CryptoZ-news.png)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -6,6 +16,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `npm i`
+
+To install all dependecies
 
 ### `npm start`
 
